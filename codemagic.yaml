@@ -4,15 +4,23 @@ workflows:
     name: Bonian Android APK
     max_build_duration: 60
     instance_type: mac_mini_m2
+
     environment:
       flutter: stable
+
     scripts:
       - name: Extract project
         script: unzip -o bonian_flutter_rebuild.zip
+
+      - name: Generate Android platform
+        script: cd bonian_flutter_rebuild && flutter create --platforms=android --org com.bonian.app .
+
       - name: Get dependencies
         script: cd bonian_flutter_rebuild && flutter pub get
+
       - name: Build APK
         script: cd bonian_flutter_rebuild && flutter build apk --release
+
     artifacts:
       - bonian_flutter_rebuild/build/app/outputs/flutter-apk/*.apk
       

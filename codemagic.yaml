@@ -8,9 +8,7 @@ workflows:
     environment:
       flutter: stable
 
-    scripts:
-      - name: Extract project
-        script: unzip -o bonian_flutter_rebuild.zip
+      script: unzip -o bonian_flutter_rebuild_fixed.zip
 
       - name: Generate Android platform
         script: cd bonian_flutter_rebuild && flutter create --platforms=android --org com.bonian.app .
